@@ -2,6 +2,7 @@ package org.launchcode.techjobs.oo;
 
 import org.junit.Test;
 
+import static java.lang.System.lineSeparator;
 import static org.junit.Assert.*;
 
 public class JobTest {
@@ -28,6 +29,42 @@ public class JobTest {
     public void testJobsForEquality() {
         Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         Job job2 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        assertFalse(job1.equals(job2));
+        assertNotEquals(job1, job2);
+    }
+
+    @Test
+    public void testToStringStartsAndEndsWithNewLine() {
+        Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        job1.toString().contains(System.lineSeparator());
+        String firstChar = String.valueOf(job1.toString().charAt(0));
+        String lastChar = String.valueOf(job1.toString().charAt(job1.toString().length() - 1));
+        assertEquals(firstChar, lineSeparator());
+        assertEquals(lastChar, lineSeparator());
+    }
+
+    @Test
+    public void testToStringContainsCorrectLabelsAndData() {
+        Job job = new Job("Web Developer", new Employer("LaunchCode"), new Location("StL"), new PositionType("Back-end developer"), new CoreCompetency("Java"));
+        String testOutPut = System.lineSeparator() + "ID: 4" +System.lineSeparator()
+                + "Name: Web Developer" + System.lineSeparator()
+                + "Employer: LaunchCode" + System.lineSeparator()
+                + "Location: StL" + System.lineSeparator()
+                + "Position Type: Back-end developer" + System.lineSeparator()
+                + "Core Competency: Java" + System.lineSeparator();
+
+        assertEquals(testOutPut, job.toString());
+    }
+
+    @Test
+    public void testToStringHandlesEmptyField() {
+        Job job = new Job("Web Developer", new Employer(""), new Location("StL"), new PositionType(""), new CoreCompetency("Java"));
+        String testOutPut = System.lineSeparator() + "ID: 3" +System.lineSeparator()
+                + "Name: Web Developer" + System.lineSeparator()
+                + "Employer: Data not available" + System.lineSeparator()
+                + "Location: StL" + System.lineSeparator()
+                + "Position Type: Data not available" + System.lineSeparator()
+                + "Core Competency: Java" + System.lineSeparator();
+
+        assertEquals(testOutPut, job.toString());
     }
 }
