@@ -45,26 +45,26 @@ public class JobTest {
     @Test
     public void testToStringContainsCorrectLabelsAndData() {
         Job job = new Job("Web Developer", new Employer("LaunchCode"), new Location("StL"), new PositionType("Back-end developer"), new CoreCompetency("Java"));
-        String testOutPut = System.lineSeparator() + "ID: 4" +System.lineSeparator()
+        String lineSeparatorString = System.lineSeparator() + "ID: 4" +System.lineSeparator()
                 + "Name: Web Developer" + System.lineSeparator()
                 + "Employer: LaunchCode" + System.lineSeparator()
                 + "Location: StL" + System.lineSeparator()
                 + "Position Type: Back-end developer" + System.lineSeparator()
                 + "Core Competency: Java" + System.lineSeparator();
 
-        assertEquals(testOutPut, job.toString());
+        assertEquals(lineSeparatorString, job.toString());
     }
 
     @Test
     public void testToStringHandlesEmptyField() {
         Job job = new Job("Web Developer", new Employer(""), new Location("StL"), new PositionType(""), new CoreCompetency("Java"));
-        String testOutPut = System.lineSeparator() + "ID: 3" +System.lineSeparator()
+        String lineSeportatorString = System.lineSeparator() + "ID: 3" +System.lineSeparator()
                 + "Name: Web Developer" + System.lineSeparator()
                 + "Employer: Data not available" + System.lineSeparator()
                 + "Location: StL" + System.lineSeparator()
                 + "Position Type: Data not available" + System.lineSeparator()
                 + "Core Competency: Java" + System.lineSeparator();
 
-        assertEquals(testOutPut, job.toString());
+        assertEquals(lineSeportatorString, job.toString());
     }
 }
