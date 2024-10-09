@@ -2,6 +2,8 @@ package org.launchcode.techjobs.oo;
 
 import java.util.Objects;
 
+import static java.lang.System.lineSeparator;
+
 public class Job {
 
     private int id;
@@ -34,10 +36,11 @@ public class Job {
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
 
+
     @Override
-    public boolean equals(Object o) {  // Two objects are equal if they have the same id.
+    public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Job)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Job job = (Job) o;
         return getId() == job.getId();
     }
@@ -47,21 +50,21 @@ public class Job {
         return Objects.hash(getId());
     }
 
-    // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
+// TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.\
 
     @Override
     public String toString() {
-        String result = System.lineSeparator();
+        String lineSeparator = System.lineSeparator();
 
-        result += "ID: " + (id != 0 ? id : "Data not available") + System.lineSeparator();
-        result += "Name: " + (name != null && !name.isEmpty() ? name : "Data not available") + System.lineSeparator();
-        result += "Employer: " + (employer != null && !employer.getValue().isEmpty() ? employer : "Data not available") + System.lineSeparator();
-        result += "Location: " + (location != null && !location.getValue().isEmpty() ? location : "Data not available") + System.lineSeparator();
-        result += "Position Type: " + (positionType != null && !positionType.getValue().isEmpty() ? positionType : "Data not available") + System.lineSeparator();
-        result += "Core Competency: " + (coreCompetency != null && !coreCompetency.getValue().isEmpty() ? coreCompetency : "Data not available");
+        lineSeparator += "ID: " + (id != 0 ? id : "Data not available") + lineSeparator();
+        lineSeparator += "Name: " + (name != null && !name.isEmpty() ? name : "Data not available") + lineSeparator();
+        lineSeparator += "Employer: " + (employer != null && !employer.getValue().isEmpty() ? employer : "Data not available") + lineSeparator();
+        lineSeparator += "Location: " + (location != null && !location.getValue().isEmpty() ? location : "Data not available") + lineSeparator();
+        lineSeparator += "Position Type: " + (positionType != null && !positionType.getValue().isEmpty() ? positionType : "Data not available") + lineSeparator();
+        lineSeparator += "Core Competency: " + (coreCompetency != null && !coreCompetency.getValue().isEmpty() ? coreCompetency : "Data not available");
 
-        result += System.lineSeparator();
+        lineSeparator += lineSeparator();
 
         if (id != 0 &&
                 (name == null || name.isEmpty()) &&
@@ -72,7 +75,7 @@ public class Job {
             return "OOPS! This job does not seem to exist.";
         }
 
-        return result;
+        return lineSeparator;
     }
 
     // Getters and Setters:
